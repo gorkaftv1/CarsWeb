@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = process.env.REACT_APP_API_URL;
 
 const apiService = {
-    getCars : async () => {
+    getAllCars : async () => {
         try {
             const response = await axios.get(`${API_URL}/cars`);
             return response.data;
