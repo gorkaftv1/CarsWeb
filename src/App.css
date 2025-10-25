@@ -1,0 +1,99 @@
+.App {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  color: #e2e8f0;
+}
+
+.app-header {
+  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+  padding: 2rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid #3b82f6;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.app-title {
+  color: #3b82f6;
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  letter-spacing: 2px;
+}
+
+.app-title .icon {
+  margin: 0 1rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.app-description {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.app-main {
+  padding: 2rem 0;
+}
+
+.app-footer {
+  background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 2px solid #334155;
+  margin-top: 3rem;
+}
+
+.app-footer p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-title {
+    font-size: 2rem;
+  }
+  
+  .app-title .icon {
+    margin: 0 0.5rem;
+  }
+  
+  .app-description {
+    font-size: 0.9rem;
+  }
+}

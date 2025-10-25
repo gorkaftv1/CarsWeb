@@ -1,0 +1,63 @@
+.car-list-container {
+  padding: 2rem 0;
+  min-height: 100vh;
+}
+
+.list-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #334155;
+}
+
+.list-title {
+  color: #3b82f6;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.list-subtitle {
+  color: #94a3b8;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.loading-text {
+  color: #94a3b8;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.error-alert, .info-alert {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+  border-radius: 12px;
+}
+
+.error-alert .alert-heading,
+.info-alert .alert-heading {
+  color: #3b82f6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .list-title {
+    font-size: 2rem;
+  }
+  
+  .car-list-container {
+    padding: 1rem 0;
+  }
+}
