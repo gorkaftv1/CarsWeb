@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import CarList from './components/CarList';
+import CarForm from './components/CarForm';
 import './App.css';
 
 function App() {
+  const carListRef = useRef(null);
+
+  const handleCarAdded = (newCar) => {
+    // Refrescar la lista de autos después de agregar uno
+    if (carListRef.current && carListRef.current.refreshCars) {
+      carListRef.current.refreshCars();
+    }
+  };
+
   return (
     <div className="App">
       <header className="app-header">
@@ -19,7 +29,8 @@ function App() {
       </header>
 
       <main className="app-main">
-        <CarList />
+        <CarForm onCarAdded={handleCarAdded} />
+        <CarList ref={carListRef} />
       </main>
 
       <footer className="app-footer">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
 import { Container, Row, Col, Spinner, Alert } from 'react-bootstrap';
 import CarCard from './CarCard';
 import Pagination from './Pagination';
@@ -7,7 +7,7 @@ import './CarList.css';
 
 const CARS_PER_PAGE = 12;
 
-const CarList = () => {
+const CarList = forwardRef((props, ref) => {
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,17 +19,25 @@ const CarList = () => {
 
   const fetchCars = async () => {
     try {
-      setLoading(true);
       setError(null);
       const response = await apiService.getAllCars();
-      setCars(response.data || []);
+      const carsList = response.data || [];
+      setCars(carsList);
+      setLoading(false);
     } catch (err) {
       setError('Error al cargar los vehículos. Por favor, verifica que la API esté funcionando.');
       console.error('Error:', err);
-    } finally {
       setLoading(false);
     }
   };
+
+  // Exponer método para refrescar desde el padre (CarForm)
+  useImperativeHandle(ref, () => ({
+    refreshCars: () => {
+      fetchCars();
+      setCurrentPage(1);
+    }
+  }));
 
   // Calcular los coches a mostrar en la página actual
   const indexOfLastCar = currentPage * CARS_PER_PAGE;
@@ -97,6 +105,8 @@ const CarList = () => {
       />
     </Container>
   );
-};
+});
+
+CarList.displayName = 'CarList';
 
 export default CarList;
